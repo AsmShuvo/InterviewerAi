@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import api from '../axios'
 import { Line } from 'vue-chartjs'
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js'
 import { useRouter } from 'vue-router'
@@ -24,7 +24,7 @@ const chartOptions = {
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get('/api/dashboard/stats')
+    const { data } = await api.get('/api/dashboard/stats')
     stats.value = data
     if (data.progress.length > 0) {
       chartData.value = {

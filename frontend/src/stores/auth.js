@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios from 'axios'
+import api from '../axios'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -9,7 +9,7 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async fetchUser() {
       try {
-        const { data } = await axios.get('/api/auth/me')
+        const { data } = await api.get('/api/auth/me')
         this.user = data.user
       } catch {
         this.user = null
@@ -18,15 +18,15 @@ export const useAuthStore = defineStore('auth', {
       }
     },
     async login(email, password) {
-      const { data } = await axios.post('/api/auth/login', { email, password })
+      const { data } = await api.post('/api/auth/login', { email, password })
       this.user = data.user
     },
     async register(payload) {
-      const { data } = await axios.post('/api/auth/register', payload)
+      const { data } = await api.post('/api/auth/register', payload)
       this.user = data.user
     },
     async logout() {
-      await axios.post('/api/auth/logout')
+      await api.post('/api/auth/logout')
       this.user = null
     }
   }

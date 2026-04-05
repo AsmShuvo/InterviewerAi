@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import axios from 'axios'
+import api from '../axios'
 import { useRouter } from 'vue-router'
 import { toast } from 'vue3-toastify'
 
@@ -103,7 +103,7 @@ async function startInterview() {
   }
   loading.value = true
   try {
-    const { data } = await axios.post('/api/interview/start', {
+    const { data } = await api.post('/api/interview/start', {
       ...form.value,
       selected_stacks: selectedStacks.value
     })

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import axios from 'axios'
+import api from '../axios'
 import { toast } from 'vue3-toastify'
 
 const route = useRoute()
@@ -57,7 +57,7 @@ function toggleTimer() {
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`/api/interview/${route.params.id}`)
+    const { data } = await api.get(`/api/interview/${route.params.id}`)
     interview.value = data.interview
     if (data.interview.status === 'completed') {
       router.replace(`/interview/result/${route.params.id}`)
@@ -95,7 +95,7 @@ async function submitAnswer() {
   const timeTaken = timer.value
 
   try {
-    const { data } = await axios.post('/api/interview/answer', {
+    const { data } = await api.post('/api/interview/answer', {
       interview_id: interview.value.id,
       question_id: currentQuestion.value.id,
       answer_text: answerText,

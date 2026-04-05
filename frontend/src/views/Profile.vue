@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import api from '../axios'
 import { useAuthStore } from '../stores/auth'
 import { toast } from 'vue3-toastify'
 
@@ -21,7 +21,7 @@ onMounted(() => {
 async function updateProfile() {
   loadingProfile.value = true
   try {
-    const { data } = await axios.put('/api/profile/update', form.value)
+    const { data } = await api.put('/api/profile/update', form.value)
     auth.user = data.user
     toast.success('Profile updated')
   } catch (err) {
@@ -34,7 +34,7 @@ async function updateProfile() {
 async function changePassword() {
   loadingPassword.value = true
   try {
-    await axios.put('/api/profile/password', passwords.value)
+    await api.put('/api/profile/password', passwords.value)
     passwords.value = { current_password: '', new_password: '' }
     toast.success('Password changed')
   } catch (err) {

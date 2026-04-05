@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import axios from 'axios'
+import api from '../axios'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -19,7 +19,7 @@ const filtered = computed(() => {
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get('/api/interview/history')
+    const { data } = await api.get('/api/interview/history')
     interviews.value = data.interviews
   } catch (err) {
     console.error(err)

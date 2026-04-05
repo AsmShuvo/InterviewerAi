@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import axios from 'axios'
+import api from '../axios'
 import { toast } from 'vue3-toastify'
 
 const route = useRoute()
@@ -15,7 +15,7 @@ const gradeLabels = { A: 'Excellent', B: 'Good', C: 'Average', D: 'Needs Improve
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`/api/interview/${route.params.id}`)
+    const { data } = await api.get(`/api/interview/${route.params.id}`)
     interview.value = data.interview
     questions.value = data.questions
   } catch (err) {

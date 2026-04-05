@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import api from '../axios'
 import { useAuthStore } from '../stores/auth'
 
 const auth = useAuthStore()
@@ -13,7 +13,7 @@ async function fetchLeaderboard() {
   loading.value = true
   try {
     const params = filterRole.value ? { job_role: filterRole.value } : {}
-    const { data } = await axios.get('/api/leaderboard', { params })
+    const { data } = await api.get('/api/leaderboard', { params })
     entries.value = data.leaderboard
     userBest.value = data.user_best
   } catch (err) {
