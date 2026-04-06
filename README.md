@@ -8,6 +8,10 @@
 
 <br/>
 
+<a href="https://interviewerai-v2.vercel.app"><img src="https://img.shields.io/badge/Live-interviewerai--v2.vercel.app-00C7B7?style=for-the-badge&logo=vercel&logoColor=white" /></a>
+
+<br/><br/>
+
 <img src="https://img.shields.io/badge/Vue.js-3-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white" />
 <img src="https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
 <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
